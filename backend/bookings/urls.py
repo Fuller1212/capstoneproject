@@ -3,5 +3,6 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.get_user_booking),
+    path('', views.user_booking),
+    path('all/', views.get_all_bookings)
 ]
