@@ -40,12 +40,15 @@ const HomePage = () => {
   };
   return (
     <div style={myStyle}>
+      <div>
+        <h3>Welcome {user.username} to Tee Time Maker, please select an option below</h3>
+      </div>
       <li>
-         <button onClick={() => navigate("/booking")}>Make A Tee Time For {user.username}</button>
+         <button onClick={() => navigate("/booking")}>Book A Tee Time</button>
         </li>
       <div>
         <li>
-         <button onClick={() => navigate("/displaybookings")}>See Booked Tee Times For {user.username}</button>
+         <button onClick={() => navigate("/displaybookings")}>See Your Booked Tee Times</button>
         </li>
       </div>  
     </div>

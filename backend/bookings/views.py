@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .serializers import BookingSerializer
 from .models import Booking
-
+from django.shortcuts import get_object_or_404
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -29,5 +29,14 @@ def get_all_bookings(request):
         bookings = Booking.objects.all()
         serializer = BookingSerializer(bookings, many=True)
         return Response(serializer.data)     
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_user_booking(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    if request.method == 'DELETE':
+        booking.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
