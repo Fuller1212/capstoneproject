@@ -1,8 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import './HomePage.css';
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -10,6 +11,7 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [cars, setCars] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -26,15 +28,26 @@ const HomePage = () => {
     };
     fetchCars();
   }, [token]);
+
+  const myStyle={
+    backgroundImage: 
+"url('https://images2.alphacoders.com/690/thumb-1920-690371.jpg')",
+    height:'100vh',
+    marginTop:'-35px',
+    fontSize:'50px',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  };
   return (
-    <div className="container">
-      <h1>Home Page for {user.username}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))}
+    <div style={myStyle}>
+      <li>
+         <button onClick={() => navigate("/booking")}>Make A Tee Time For {user.username}</button>
+        </li>
+      <div>
+        <li>
+         <button onClick={() => navigate("/displaybookings")}>See Booked Tee Times For {user.username}</button>
+        </li>
+      </div>  
     </div>
   );
 };

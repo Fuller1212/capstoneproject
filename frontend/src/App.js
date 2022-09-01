@@ -10,9 +10,12 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import MakeBooking from "./components/MakeBooking/MakeBooking";
+import DisplayBookings from "./components/DisplayBookings/DisplayBookings";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+
 
 function App() {
   return (
@@ -29,6 +32,8 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/booking" element={<MakeBooking/>} />
+        <Route path="/displaybookings" element={<DisplayBookings/>}/>
       </Routes>
       <Footer />
     </div>
