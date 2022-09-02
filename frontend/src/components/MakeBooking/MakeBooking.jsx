@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import FullCalendar from '@fullcalendar/react' 
-import dayGridPlugin from '@fullcalendar/daygrid'
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
@@ -10,6 +8,7 @@ const MakeBooking = () => {
   const [date, setDate] = useState();
   const [players, setPlayers] = useState();
   const [time, setTime] = useState();
+  
 
   const createBooking = async (event) => {
     event.preventDefault();
@@ -28,48 +27,78 @@ const MakeBooking = () => {
         });
   }
 
+  
 
     return ( 
     <div>
       <form onSubmit={createBooking}>
+      <label>Select Time:</label>
+      <div>
+        <select
+          value={time}
+          onChange={(event) => setTime(event.target.value)}>
+          <option value="8:00">8:00</option>
+          <option value="8:15">8:15</option>
+          <option value="8:30">8:30</option>
+          <option value="8:45">8:45</option>
+          <option value="9:00">9:00</option>
+          <option value="9:15">9:15</option>
+          <option value="9:39">9:30</option>
+          <option value="9:45">9:45</option>
+          <option value="10:15">10:15</option>
+          <option value="10:30">10:30</option>
+          <option value="10:45">10:45</option>
+          <option value="11:00">11:00</option>
+          <option value="11:15">11:15</option>
+          <option value="11:30">11:30</option>
+          <option value="11:45">11:45</option>
+          <option value="12:00">12:00</option>
+          <option value="12:15">12:15</option>
+          <option value="12:30">12:30</option>
+          <option value="12:45">12:45</option>
+          <option value="1:00">1:00</option>
+          <option value="1:15">1:15</option>
+          <option value="1:30">1:30</option>
+          <option value="1:45">1:45</option>
+          <option value="2:00">2:00</option>
+          <option value="2:15">2:15</option>
+          <option value="2:30">2:30</option>
+          <option value="2:45">2:45</option>
+          <option value="3:00">3:00</option>
+          <option value="3:15">3:15</option>
+          <option value="3:30">3:30</option>
+          <option value="3:45">3:45</option>
+          <option value="4:00">4:00</option>
+          <option value="4:15">4:15</option>
+          <option value="4:30">4:30</option>
+          <option value="4:45">4:45</option>
+          <option value="5:00">5:00</option>
+          <option value="5:15">5:15</option>
+          <option value="5:30">5:30</option>
+          <option value="5:45">5:45</option>
+          <option value="6:00">6:00</option>
+        </select>
+      </div>
+      <label>Select Date:</label>
+      <div>
         <input 
-        type="text"
-        placeholder='Select time' 
-        value={time}
-        onChange={(event) => setTime(event.target.value)}/>
-
-        <input 
-        type="text"
-        placeholder='Select date' 
+        type="text" 
         value={date}
         onChange={(event) => setDate(event.target.value)}/>
-
-        {/* <input 
-        type="text"
-        placeholder='Select number of players' 
-        value={players}
-        onChange={(event) => setPlayers(event.target.value)}/> */}
-
+      </div>
+        <label>Number of Players:</label>
+        <div>
         <select value={players} onChange={(event) => setPlayers(event.target.value)}>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
         </select>  
-
+        </div>
         <button type='submit'>Book Tee Time</button>
       </form>
-      <button class="c-button-unstyled c-icon_button c-icon_button--size_small c-wysiwyg_container__button c-wysiwyg_container__button--send_options c-wysiwyg_container__button--disabled c-icon_button--default" tabindex="-1" aria-haspopup="menu" aria-expanded="false" aria-disabled="true" data-qa="texty_send_options_button" aria-label="Schedule for later" delay="150" data-sk="tooltip_parent" type="button"/>
 
-        <FullCalendar
-    plugins={[ dayGridPlugin ]}
-    initialView="dayGridMonth"
-    weekends={false}
-    events={[
-      { title: 'event 1', date: '2019-04-01' },
-      { title: 'event 2', date: '2019-04-02' }
-    ]}/>
     </div>  
      );
 }
