@@ -15,6 +15,7 @@ def user_booking(request):
         serializer = BookingSerializer(booking, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
+        print(request.data)
         serializer = BookingSerializer(data= request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)

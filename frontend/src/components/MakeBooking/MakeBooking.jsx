@@ -5,9 +5,10 @@ import axios from "axios";
 const MakeBooking = () => {
 
   const [user, token] = useAuth();
-  const [date, setDate] = useState();
-  const [players, setPlayers] = useState();
-  const [time, setTime] = useState();
+  const [date, setDate] = useState("2022-09-08");
+  const [players, setPlayers] = useState(1);
+  const [time, setTime] = useState("10:00");
+  const [booking, setBooking] = useState([]);
   
 
   const createBooking = async (event) => {
@@ -24,8 +25,10 @@ const MakeBooking = () => {
             headers: {
                 Authorization: "Bearer " + token,
               },
-        });
-  }
+        },
+        setBooking(response.data)
+        );
+  };
 
   
 
@@ -82,9 +85,11 @@ const MakeBooking = () => {
       <label>Select Date:</label>
       <div>
         <input 
-        type="text" 
+        type="date" 
         value={date}
-        onChange={(event) => setDate(event.target.value)}/>
+        onChange={(event) => {
+          console.log(event.target.value)
+          setDate(event.target.value)}}/>
       </div>
         <label>Number of Players:</label>
         <div>
@@ -97,8 +102,8 @@ const MakeBooking = () => {
         </select>  
         </div>
         <button type='submit'>Book Tee Time</button>
+          
       </form>
-
     </div>  
      );
 }
