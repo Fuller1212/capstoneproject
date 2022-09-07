@@ -8,7 +8,6 @@ const MakeBooking = () => {
   const [date, setDate] = useState("2022-09-08");
   const [players, setPlayers] = useState(1);
   const [time, setTime] = useState("10:00");
-  const [booking, setBooking] = useState([]);
   
 
   const createBooking = async (event) => {
@@ -26,8 +25,7 @@ const MakeBooking = () => {
                 Authorization: "Bearer " + token,
               },
             },
-        setBooking(response.data),
-        console.log(booking)
+        
         );
   };
 

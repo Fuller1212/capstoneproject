@@ -4,19 +4,26 @@ import { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import axios from "axios";
 import listPlugin from '@fullcalendar/list';
-import CancelBooking from '../CancelBooking/CancelBooking';
-import eventClick  from '@fullcalendar/react';
+import EventModal from '../EventModal/EventModal';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const DisplayBookings = () => {
 
     const [user, token] = useAuth();
     const [bookings,setBookings] = useState([]);
-
+    const [modalShow, setModalShow] = useState(false);
 
     useEffect(() => {
       getBooking();
     }, [token]);
 
+    const handleClick = () => {
+      setModalShow(true)
+    }
+    const handleCloseModal = () => {
+      setModalShow(false)
+    }
 
     const getBooking = async() => {
         try{
@@ -27,22 +34,25 @@ const DisplayBookings = () => {
               },
         });
           let bookingArray = response.data.map((booking) => {
-            return { title: booking.start_time, date: booking.date }
+            return { title: booking.start_time, date: booking.date, id: booking.id }
           });
           setBookings(bookingArray)
+          console.log(bookingArray)
 
         } catch (er) {
           console.log(er.message)
         }
     };
 
+
     return ( 
         <div>
-          <CancelBooking bookingsId={bookings.id}/>
+            <EventModal show={modalShow} close={handleCloseModal}/>
             <FullCalendar
             events={bookings}
             plugins={[ daygridPlugin, listPlugin]}
-            initialView="dayGridMonth"            
+            initialView="dayGridMonth" 
+              eventClick={handleClick}
             headerToolbar={{
               right: 'dayGridMonth,dayGridWeek,dayGridDay,',
               left: 'today prev,next listWeek'

@@ -1,5 +1,6 @@
 import useAuth from '../../hooks/useAuth';
 import axios from "axios";
+import DisplayBookings from '../DisplayBookings/DisplayBookings';
 
 
 const CancelBooking = (props) => {
@@ -20,7 +21,7 @@ const CancelBooking = (props) => {
     }
     return ( 
         <div>
-            <button onClick={deleteBooking}>Cancel Tee Time</button>
+            <DisplayBookings deleteBooking={deleteBooking}/>
         </div>
      );
 }

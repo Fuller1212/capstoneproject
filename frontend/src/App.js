@@ -15,6 +15,8 @@ import DisplayBookings from "./components/DisplayBookings/DisplayBookings";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import EmployeeHomePage from "./components/EmployeeHomePage/EmployeeHomePage";
+import HomePageRoute from "./utils/HomePageRoute";
 
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePageRoute />
             </PrivateRoute>
           }
         />
