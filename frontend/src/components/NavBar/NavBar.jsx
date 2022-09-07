@@ -13,10 +13,11 @@ const Navbar = () => {
       <div>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>Tee Time Maker</b>
+            <b>Home</b>
           </Link>
         </li>
-        {/* <b>Signed in as {user.username}</b> */}
+        <li className="make-tee-time" onClick={() => navigate('/booking')}>Make Tee Time</li>
+        <li className="display-tee-time" onClick={() => navigate('/displaybookings')}>View Bookings</li>
         </div>
         <li>
           {user ? (

@@ -3,6 +3,9 @@ import daygridPlugin from '@fullcalendar/daygrid';
 import { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import axios from "axios";
+import listPlugin from '@fullcalendar/list';
+import CancelBooking from '../CancelBooking/CancelBooking';
+import eventClick  from '@fullcalendar/react';
 
 const DisplayBookings = () => {
 
@@ -24,7 +27,7 @@ const DisplayBookings = () => {
               },
         });
           let bookingArray = response.data.map((booking) => {
-            return { booking: booking.date, time: booking.start_time }
+            return { title: booking.start_time, date: booking.date }
           });
           setBookings(bookingArray)
 
@@ -35,14 +38,18 @@ const DisplayBookings = () => {
 
     return ( 
         <div>
+          <CancelBooking bookingsId={bookings.id}/>
             <FullCalendar
             events={bookings}
-            plugins={[ daygridPlugin]}
+            plugins={[ daygridPlugin, listPlugin]}
             initialView="dayGridMonth"            
             headerToolbar={{
-              right: 'dayGridMonth,dayGridWeek,dayGridDay,today,prev,next'
+              right: 'dayGridMonth,dayGridWeek,dayGridDay,',
+              left: 'today prev,next listWeek'
             }}
+            
             navLinks={true}/>
+            
         </div>
      );
 }

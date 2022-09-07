@@ -25,8 +25,9 @@ const MakeBooking = () => {
             headers: {
                 Authorization: "Bearer " + token,
               },
-        },
-        setBooking(response.data)
+            },
+        setBooking(response.data),
+        console.log(booking)
         );
   };
 
