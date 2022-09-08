@@ -13,13 +13,16 @@ const DisplayBookings = () => {
     const [user, token] = useAuth();
     const [bookings,setBookings] = useState([]);
     const [modalShow, setModalShow] = useState(false);
+    const [selectedBooking, setSelectedBooking] = useState({title: '',date:'', id:''});
 
     useEffect(() => {
       getBooking();
-    }, [token]);
+    }, []);
 
-    const handleClick = () => {
+    const handleClick = (info) => {
       setModalShow(true)
+      setSelectedBooking(info.event)
+      console.log(selectedBooking)
     }
     const handleCloseModal = () => {
       setModalShow(false)
@@ -47,7 +50,7 @@ const DisplayBookings = () => {
 
     return ( 
         <div>
-            <EventModal show={modalShow} close={handleCloseModal}/>
+            <EventModal show={modalShow} onClose={handleCloseModal} selectedBooking={selectedBooking}/>
             <FullCalendar
             events={bookings}
             plugins={[ daygridPlugin, listPlugin]}

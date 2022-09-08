@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-
+// import TimePicker from 'react-time-picker'
 const MakeBooking = () => {
 
   const [user, token] = useAuth();
@@ -29,7 +29,6 @@ const MakeBooking = () => {
         );
   };
 
-  
 
     return ( 
     <div>
@@ -80,6 +79,7 @@ const MakeBooking = () => {
           <option value="5:45">5:45</option>
           <option value="6:00">6:00</option>
         </select>
+        {/* <TimePicker value={time} onChange={(event) => setTime(event.target.value)} step={15} beginLimit="8:00AM" endLimit="6:00PM"/> */}
       </div>
       <label>Select Date:</label>
       <div>
