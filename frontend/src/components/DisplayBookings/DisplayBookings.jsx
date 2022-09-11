@@ -7,6 +7,7 @@ import listPlugin from '@fullcalendar/list';
 import EventModal from '../EventModal/EventModal';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import EmployeeEventModal from '../EmployeeEventModal/EmployeeEventModal';
 
 const DisplayBookings = () => {
 
@@ -18,6 +19,8 @@ const DisplayBookings = () => {
     useEffect(() => {
       getBooking();
     }, []);
+
+    
 
     const handleClick = (info) => {
       setModalShow(true)
@@ -37,7 +40,7 @@ const DisplayBookings = () => {
               },
         });
           let bookingArray = response.data.map((booking) => {
-            return { title: booking.start_time, date: booking.date, id: booking.id }
+            return { title: booking.start_time, date: booking.date, id: booking.id}
           });
           setBookings(bookingArray)
           console.log(bookingArray)
@@ -55,7 +58,7 @@ const DisplayBookings = () => {
             events={bookings}
             plugins={[ daygridPlugin, listPlugin]}
             initialView="dayGridMonth" 
-              eventClick={handleClick}
+            eventClick={handleClick}
             headerToolbar={{
               right: 'dayGridMonth,dayGridWeek,dayGridDay,',
               left: 'today prev,next listWeek'
