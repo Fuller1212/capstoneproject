@@ -14,7 +14,13 @@ li {
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
+
+  
+    
+    
 }
+ 
+
 
 .navBar button {
   background: transparent;
@@ -34,7 +40,7 @@ li {
   font-size: 2rem;
 }
 
-.make-tee-time {
+.make-tee-time  {
   cursor: pointer;
   font-size: 2rem;
 }
@@ -42,4 +48,9 @@ li {
 .display-tee-time {
   cursor: pointer;
   font-size: 2rem;
+}
+
+.nav-header{
+text-align: center;
+color: rgb(255, 255, 255);
 }

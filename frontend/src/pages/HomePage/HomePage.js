@@ -41,15 +41,10 @@ const HomePage = () => {
   return (
     <div style={myStyle}>
       <div>
-        <h3>Welcome {user.username} to Tee Time Maker, please select an option below</h3>
+        <h3 style={{padding:10}}>Welcome {user.username}, we hope you find the perfect tee time at our beautiful course </h3>
       </div>
-      <li>
-         <button onClick={() => navigate("/booking")}>Book A Tee Time</button>
-        </li>
       <div>
-        <li>
-         <button onClick={() => navigate("/displaybookings")}>See Your Booked Tee Times</button>
-        </li>
+        
       </div>  
     </div>
   );

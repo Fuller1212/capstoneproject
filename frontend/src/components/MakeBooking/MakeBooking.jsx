@@ -3,10 +3,11 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import "./MakeBooking.css";
 
 const MakeBooking = ({ bookings, fetchBookings }) => {
   const [user, token] = useAuth();
-  const [date, setDate] = useState("2022-09-08");
+  const [date, setDate] = useState("2022-09-12");
   const [players, setPlayers] = useState(1);
   const [time, setTime] = useState("10:00");
   const navigate = useNavigate();
@@ -74,39 +75,49 @@ const MakeBooking = ({ bookings, fetchBookings }) => {
   });
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={createBooking}>
-        <label>Select Date:</label>
-        <div>
-          <input
-            type="date"
-            value={date}
-            onChange={(event) => {
-              console.log(event.target.value);
-              setDate(event.target.value);
-            }}
-          />
+        <div className="input-field">
+          <label>Select Date:</label>
+          <div>
+            <input
+              type="date"
+              value={date}
+              onChange={(event) => {
+                console.log(event.target.value);
+                setDate(event.target.value);
+              }}
+            />
+          </div>
         </div>
-        <label>Select Time:</label>
-        <div>
-          <select onChange={(event) => setTime(event.target.value)}>
-            {options}
-          </select>
+        <div className="input-field">
+          <label>Select Time:</label>
+          <div>
+            <select onChange={(event) => setTime(event.target.value)}>
+              {options}
+            </select>
+          </div>
         </div>
-        <label>Number of Players:</label>
-        <div>
-          <select
-            value={players}
-            onChange={(event) => setPlayers(event.target.value)}
-          >
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
-          </select>
+        <div className="test">
+          <label>Number of Players:</label>
+          <div>
+            <select
+              value={players}
+              onChange={(event) => setPlayers(event.target.value)}
+            >
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </select>
+          </div>
         </div>
-        <button type="submit">Book Tee Time</button>
+        <div>
+          <button className="button" type="submit">
+            Book Tee Time
+          </button>
+        </div>
       </form>
     </div>
   );
